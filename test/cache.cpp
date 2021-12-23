@@ -18,12 +18,12 @@ TEST_CASE("Order of keys in json does not matter", "[normalization]")
 
 TEST_CASE("Order of keys in embedded object does not matter", "[normalization]")
 {
-    auto depth2_1  = helper::json_string("key0", 0, "key1", 1);
-    auto depth1_1  = helper::json_string("depth2", depth2_1, "value", 0);
+    auto depth2_1 = helper::json_string("key0", 0, "key1", 1);
+    auto depth1_1 = helper::json_string("depth2", depth2_1, "value", 0);
     auto variant_1 = helper::json_string("embedded", depth1_1, "value", 0);
 
-    auto depth2_2  = helper::json_string("key1", 1, "key0", 0);
-    auto depth1_2  = helper::json_string("value", 0, "depth2", depth2_2);
+    auto depth2_2 = helper::json_string("key1", 1, "key0", 0);
+    auto depth1_2 = helper::json_string("value", 0, "depth2", depth2_2);
     auto variant_2 = helper::json_string("value", 0, "embedded", depth1_1);
 
     // std::cout << variant_1 << std::endl << variant_2 << std::endl;
@@ -62,7 +62,7 @@ TEST_CASE("Cached value is correct", "[cache]")
 {
     auto const method = "aMethod";
     auto const params = helper::param_string(helper::json_string("key", "value"));
-    auto const value  = helper::json_string("value", 1, "context", "test");
+    auto const value = helper::json_string("value", 1, "context", "test");
 
     caching::cache cache;
     cache.lookup_or_insert(method, params, mockup::factory::fixed_value{value});
@@ -75,7 +75,7 @@ TEST_CASE("Refresh refreshes the cached value", "[cache]")
 {
     auto const method = "aMethod";
     auto const params = helper::param_string(helper::json_string("key", "value"));
-    auto const value  = helper::json_string("value", 1, "context", "test");
+    auto const value = helper::json_string("value", 1, "context", "test");
 
     caching::cache cache;
     cache.lookup_or_insert(method, params, mockup::factory::fixed_value{value});
@@ -89,9 +89,9 @@ TEST_CASE("Refresh refreshes the cached value", "[cache]")
 
 TEST_CASE("Empty parameters equals no parameter", "[parameters]")
 {
-    auto const method  = "withEmptyParams";
+    auto const method = "withEmptyParams";
     auto const method2 = "withNoParams";
-    auto const params  = helper::param_string("");
+    auto const params = helper::param_string("");
 
     caching::cache cache;
 

@@ -22,7 +22,7 @@ namespace caching
     namespace detail
     {
         using parameters = rapidjson::Document;
-        using response   = std::string;
+        using response = std::string;
 
         struct hashable_params
         {
